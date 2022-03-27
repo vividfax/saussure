@@ -2,6 +2,7 @@ class Glyph {
 
     constructor(image) {
 
+        this.id = image;
         this.label = "?";
         this.image = loadImage("images/" + image + ".svg");
         this.x = random(width);

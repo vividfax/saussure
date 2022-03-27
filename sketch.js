@@ -1,4 +1,6 @@
 let glyphs = [];
+let hoveredGlyphs = [];
+let hoveredGlyphsIds = [];
 
 let word = "";
 
@@ -19,6 +21,8 @@ function setup() {
 
 function draw() {
 
+    hoveredGlyphs = [];
+    hoveredGlyphsIds = [];
     word = "";
 
     background("#BEE5BF");
@@ -36,12 +40,36 @@ function draw() {
 
     for (let i = 0; i < glyphs.length; i++) {
         if (glyphs[i].hovered) {
-            word += glyphs[i].label + " + ";
+            hoveredGlyphs.push(glyphs[i]);
+            hoveredGlyphsIds.push(glyphs[i].id);
         }
     }
 
-    word = word.slice(0, -3);
-    text(word, width/2, height-50);
+    hoveredGlyphs = hoveredGlyphs.sort();
+    hoveredGlyphsIds = hoveredGlyphsIds.sort();
+
+    let displayedString = "";
+    word = getItem(hoveredGlyphsIds.join(" + "));
+
+    if (hoveredGlyphs.length == 0) {
+        displayedString = " ";
+    } else if (word != null) {
+        displayedString = word;
+    } else {
+        let translatedGlyphs = [];
+        for (let i = 0; i < hoveredGlyphsIds.length; i++) {
+
+            let translatedGlyph = getItem(hoveredGlyphsIds[i]);
+            if (translatedGlyph == null) {
+                translatedGlyph = "?";
+            }
+            translatedGlyphs.push(translatedGlyph);
+        }
+        displayedString = translatedGlyphs.join(" + ");
+
+    }
+
+    text(displayedString, width/2, height-50);
 }
 
 function mousePressed() {
@@ -78,14 +106,15 @@ function mouseDragged() {
 
 function keyPressed() {
 
-    for (i in glyphs) {
-
-       if (glyphs[i].hovered) {
-
-            if (glyphs[i].label == "?") {
-                glyphs[i].label = "";
-            }
-            glyphs[i].label += key;
-        }
+    if (getItem(hoveredGlyphsIds.join(" + ")) == null) {
+        word = "";
     }
+
+    if (keyCode == DELETE || keyCode == BACKSPACE) {
+        word = word.slice(0, -1);
+    } else {
+        word += key;
+    }
+
+    storeItem(hoveredGlyphsIds.join(" + "), word);
 }
