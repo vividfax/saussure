@@ -11,6 +11,7 @@ function setup() {
     textAlign(CENTER, CENTER);
 
     fill("#493657");
+
     textSize(24);
 
     glyphs.push(new Glyph("arrow"));
@@ -26,6 +27,9 @@ function draw() {
     word = "";
 
     background("#BEE5BF");
+    fill("#493657");
+    rect(0, height-100, width, 100);
+    fill("#BEE5BF");
 
     for (let i = 0; i < glyphs.length; i++) {
 
@@ -112,7 +116,7 @@ function keyPressed() {
 
     if (keyCode == DELETE || keyCode == BACKSPACE) {
         word = word.slice(0, -1);
-    } else {
+    } else if (/[a-zA-Z]/g.test(key) && key.length == 1) {
         word += key;
     }
 
