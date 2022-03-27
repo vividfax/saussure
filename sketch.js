@@ -4,15 +4,15 @@ let hoveredGlyphsIds = [];
 
 let word = "";
 
+let interacted = false;
+
 function setup() {
 
     createCanvas(windowWidth, windowHeight);
     imageMode(CENTER);
     textAlign(CENTER, CENTER);
-
-    fill("#493657");
-
-    textSize(24);
+    textSize(40);
+    textFont("Hubballi");
 
     glyphs.push(new Glyph("arrow"));
     glyphs.push(new Glyph("circle"));
@@ -26,10 +26,11 @@ function draw() {
     hoveredGlyphsIds = [];
     word = "";
 
-    background("#BEE5BF");
+    background("#493657");
     fill("#493657");
-    rect(0, height-100, width, 100);
+    //rect(0, height-100, width, 100);
     fill("#BEE5BF");
+    rect(15, 15, width-30, height-115, 5);
 
     for (let i = 0; i < glyphs.length; i++) {
 
@@ -56,7 +57,9 @@ function draw() {
     word = getItem(hoveredGlyphsIds.join(" + "));
 
     if (hoveredGlyphs.length == 0) {
-        displayedString = " ";
+        if (interacted == false) {
+            displayedString = "hover and type to change the meaning";
+        }
     } else if (word != null) {
         displayedString = word;
     } else {
@@ -71,6 +74,10 @@ function draw() {
         }
         displayedString = translatedGlyphs.join(" + ");
 
+    }
+
+    if (displayedString == "hover and type to change the meaning") {
+        fill("#838E8B");
     }
 
     text(displayedString, width/2, height-50);
@@ -117,6 +124,7 @@ function keyPressed() {
     if (keyCode == DELETE || keyCode == BACKSPACE) {
         word = word.slice(0, -1);
     } else if (/[a-zA-Z]/g.test(key) && key.length == 1) {
+        interacted = true;
         word += key;
     }
 

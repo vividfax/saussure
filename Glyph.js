@@ -5,8 +5,8 @@ class Glyph {
         this.id = image;
         this.label = "?";
         this.image = loadImage("images/" + image + ".svg");
-        this.x = random(width/2) + width/4;
-        this.y = random(height/2) + height/4;
+        this.x = random(width-200) + 100;
+        this.y = random(height-300) + 100;
         this.radius = 50;
         this.drag = false;
         this.hovered = false;
