@@ -20,12 +20,12 @@ function setup() {
     glyphs.push(new Glyph("shape3"));
     glyphs.push(new Glyph("shape4"));
     // glyphs.push(new Glyph("shape5"));
-    glyphs.push(new Glyph("shape6"));
+    // glyphs.push(new Glyph("shape6"));
     // glyphs.push(new Glyph("shape7"));
     // glyphs.push(new Glyph("shape8"));
     glyphs.push(new Glyph("shape9"));
     glyphs.push(new Glyph("shape10"));
-    glyphs.push(new Glyph("shape11"));
+    // glyphs.push(new Glyph("shape11"));
     glyphs.push(new Glyph("shape12"));
     // glyphs.push(new Glyph("shape13"));
     glyphs.push(new Glyph("shape14"));
