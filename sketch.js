@@ -16,7 +16,7 @@ function setup() {
 
     glyphs.push(new Glyph("s0"));
     // glyphs.push(new Glyph("s1"));
-    glyphs.push(new Glyph("s2"));
+    // glyphs.push(new Glyph("s2"));
     glyphs.push(new Glyph("s3"));
     glyphs.push(new Glyph("s4"));
     // glyphs.push(new Glyph("s5"));
@@ -24,7 +24,7 @@ function setup() {
     // glyphs.push(new Glyph("s7"));
     // glyphs.push(new Glyph("s8"));
     glyphs.push(new Glyph("s9"));
-    glyphs.push(new Glyph("s10"));
+    // glyphs.push(new Glyph("s10"));
     // glyphs.push(new Glyph("s11"));
     glyphs.push(new Glyph("s12"));
     // glyphs.push(new Glyph("s13"));
