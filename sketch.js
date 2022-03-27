@@ -128,7 +128,7 @@ function mouseDragged() {
 
 function keyPressed() {
 
-    if (getItem(hoveredGlyphsIds.join(" + ")) == null) {
+    if (getItem(hoveredGlyphsIds.join(" + ")) == null || word == "?") {
         word = "";
     }
 
@@ -139,5 +139,9 @@ function keyPressed() {
         word += key;
     }
 
-    storeItem(hoveredGlyphsIds.join(" + "), word);
+    if (word == "") {
+        storeItem(hoveredGlyphsIds.join(" + "), "?");
+    } else {
+        storeItem(hoveredGlyphsIds.join(" + "), word);
+    }
 }
