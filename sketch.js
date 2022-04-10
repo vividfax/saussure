@@ -84,7 +84,10 @@ function draw() {
             translatedGlyphs.push(translatedGlyph);
         }
         displayedString = translatedGlyphs.join(" + ");
-        displayedString += " = ?";
+
+        if (displayedString.includes("+")) {
+            displayedString += " = ?";
+        }
     }
 
     if (displayedString == "hover and type to change the meaning") {
